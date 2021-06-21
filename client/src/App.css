@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.input-image {
+  display: none;
+}
+
+.ant-upload {
+  background-color: rgb(250, 250, 250);
+  /* background-image: url("null"); */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center !important;
+  margin-top: 10%;
+  color: #4aa1f3;
+  font-weight: bold;
+}
+
+.content {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
