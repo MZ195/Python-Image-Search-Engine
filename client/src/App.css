@@ -1,3 +1,28 @@
+/* Style the navbar */
+#navbar {
+  overflow: hidden;
+  width: 100%;
+  background-color: #053742;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  position: sticky;
+  z-index: 9;
+  border: #ffffff;
+  /* display: inline-block; */
+}
+
+/* Navbar links */
+#navbar h2 {
+  float: inline-start;
+  display: block;
+  color: #f2f2f2;
+  text-align: canter;
+  padding: 20px;
+  text-decoration: none;
+  font-size: medium;
+  font-weight: bolder;
+}
+
 .App {
   text-align: center;
 }
@@ -44,4 +69,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.result-image {
+  height: 300px;
+  width: 300px;
+}
+
+.box {
+  background: red;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.loading-view {
+  background-color: #ffffff;
+  border-radius: 30px;
+  max-height: 750px;
+  /* max-width: 200px; */
+  padding: 35px;
+  margin: 15px 15px;
+  color: rgb(0, 0, 0);
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  transition: 0.3s;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.34);
 }

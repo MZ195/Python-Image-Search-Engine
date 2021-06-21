@@ -7,6 +7,7 @@ class FileInput extends Component {
     this.state = {
       fileSelected: null,
       images: [],
+      isLoading: false,
     };
   }
   render() {
@@ -14,9 +15,14 @@ class FileInput extends Component {
       const fd = new FormData();
       fd.append("image", this.state.fileSelected, this.state.fileSelected.name);
 
+      this.setState({
+        isLoading: true,
+      });
+
       axios.post("http://127.0.0.1:7070/upload/", fd).then((res) => {
         this.setState({
           images: res.data.result,
+          isLoading: false,
         });
       });
     };
@@ -28,16 +34,58 @@ class FileInput extends Component {
     };
 
     const newData = this.state.images.map((data, index) => (
-      <div key={index}>
-        <img alt="" src={}></img>
+      <div className="col m-3 pb-3" key={index}>
+        <img
+          className="result-image mx-auto img-thumbnail"
+          alt=""
+          src={window.location.origin + "/images/" + data.image}
+        ></img>
       </div>
     ));
 
-    return (
-      <div className="div">
-        <input type="file" onChange={fileSelectHandler} />
-        <button onClick={fileUploadHandler}>upload</button>
-        {newData}
+    return this.state.isLoading ? (
+      <div className="row loading-view">
+        <p>Loading...</p>
+      </div>
+    ) : (
+      <div>
+        <div className="row">
+          <div className="col">
+            <div className="row m-3 mx-auto pb-3">
+              <img
+                className="result-image mx-auto img-thumbnail"
+                alt=""
+                src={
+                  this.state.fileSelected
+                    ? window.location.origin +
+                      "/images/" +
+                      this.state.fileSelected.name
+                    : window.location.origin + "/images/generic.png"
+                }
+              />
+            </div>
+            <div className="row mx-auto m-3 pb-3">
+              <div className="col">
+                <input
+                  type="file"
+                  class="form-control"
+                  onChange={fileSelectHandler}
+                />
+              </div>
+            </div>
+            <div className="row m-3 mx-auto pb-3">
+              <div className="col">
+                <button
+                  class="btn btn-primary mx-auto btn-block"
+                  onClick={fileUploadHandler}
+                >
+                  upload
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">{newData}</div>
       </div>
     );
   }
